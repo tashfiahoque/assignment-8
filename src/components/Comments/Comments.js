@@ -35,7 +35,7 @@ const Comments = () => {
     const classes = useStyles();
     return (
         <Grid container direction="row" spacing={2} className={classes.main}>
-            <Grid container direction="column" alignItems="center" spacing={2} className={classes.textStyle}>List of Users Posts</Grid> 
+            <Grid container direction="column" alignItems="center" spacing={2} className={classes.textStyle}>List of Comments</Grid> 
             {
               newComments.map(comment => <Grid item xs={1} md={4}><EachComment comment={comment} key={comment.id} /></Grid>)
             }
