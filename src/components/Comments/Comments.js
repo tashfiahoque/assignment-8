@@ -7,37 +7,37 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const Comments = () => {
-    const {postId} = useParams();
+    const { postId } = useParams();
     const [comments, setComments] = useState([]);
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
-        .then(res => res.json())
-        .then(data => setComments(data))
-    }, []) 
+            .then(res => res.json())
+            .then(data => setComments(data))
+    }, [])
     let newComments = comments.map((e) => {
-        for(let element of Fake){
-            if(e.id === element.id) Object.assign(e, element);
+        for (let element of Fake) {
+            if (e.id === element.id) Object.assign(e, element);
         }
         return e;
     });
     const useStyles = makeStyles({
         main: {
-          padding: '50px'
+            padding: '50px'
         },
         textStyle: {
             fontSize: '30px',
             fontWeight: '700',
             color: 'orange',
             paddingBottom: '20px'
-        
+
         }
-      });
+    });
     const classes = useStyles();
     return (
         <Grid container direction="row" spacing={2} className={classes.main}>
-            <Grid container direction="column" alignItems="center" spacing={2} className={classes.textStyle}>List of Comments</Grid> 
+            <Grid container direction="column" alignItems="center" spacing={2} className={classes.textStyle}>List of Comments</Grid>
             {
-              newComments.map(comment => <Grid item xs={1} md={4}><EachComment comment={comment} key={comment.id} /></Grid>)
+                newComments.map(comment => <Grid item xs={1} md={4}><EachComment comment={comment} key={comment.id} /></Grid>)
             }
         </Grid>
     );
